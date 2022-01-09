@@ -60,6 +60,7 @@ def process(file, seq_length):
     print('dictionary size: ', len(dictionary))
     print('amount of sequences: ', len(sequences))
 
+
     # translations for words to numbers
     word_to_idx = dict((c, i) for i, c in enumerate(dictionary))
     idx_to_word = dict((i, c) for i, c in enumerate(dictionary))
@@ -69,7 +70,19 @@ def process(file, seq_length):
         for j in range(len(sequences[i])):
             sequences[i][j] = word_to_idx[sequences[i][j]]
         next_words[i] = word_to_idx[next_words[i]]
+
+    # Add extra dimension? Of 1?
     X = np.reshape(sequences, (len(sequences), seq_length-1, 1))
+    # normalize? Why?
     X = X / len(dictionary)
+    # one-hot encoding
     y = np_utils.to_categorical(next_words)
+    print(y.shape)
+    
+    # X is normalized RNN input with shape(sequence_amt, sequence_length - 1, 1)
+    # y is one-hot-encoded target value with shape(sequence_amt, dictionary_size)
+    # sequences are the textual representations of X
+    # next_words are the textual representations of y
+    # word_to_idx is a translation list
+    # idx_to_word is a translation list
     return (X, y, sequences, next_words, dictionary, word_to_idx, idx_to_word)
