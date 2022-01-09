@@ -20,8 +20,7 @@ weight_file = sys.argv[-1]
 seq_length = 4
 
 # process the data
-X, y, sequences, next_words, words, word_to_idx, idx_to_word = process(
-    seq_length)
+X, y, sequences, next_words, words, word_to_idx, idx_to_word = process("data\\horoscopes.csv", seq_length)
 
 # set up model
 model = Sequential()
@@ -59,4 +58,4 @@ for i in range(50):
     seed.append(idx)
     seed = seed[1:len(seed)]
 
-print(generated)
+print(" ".join(generated))

@@ -77,7 +77,6 @@ def process(file, seq_length):
     X = X / len(dictionary)
     # one-hot encoding
     y = np_utils.to_categorical(next_words)
-    print(y.shape)
     
     # X is normalized RNN input with shape(sequence_amt, sequence_length - 1, 1)
     # y is one-hot-encoded target value with shape(sequence_amt, dictionary_size)
