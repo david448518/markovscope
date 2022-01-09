@@ -65,7 +65,7 @@ if weight_file[-4:] == 'hdf5':
     model.load_weights(weight_file)
     model.compile(loss='categorical_crossentropy', optimizer='adam')
 else:
-    fp = 'weights-{epoch:02d}-{loss:.4f}-bigger.hdf5'
+    fp = 'checkpoints/weights-{epoch:02d}-{loss:.4f}-bigger.hdf5'
     checkpoint = ModelCheckpoint(
         fp, monitor='loss', verbose=1, save_best_only=True, mode='min')
     callbacks_list = [checkpoint]
