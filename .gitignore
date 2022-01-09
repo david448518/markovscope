@@ -3,8 +3,8 @@ weights/
 [._]*.s[a-w][a-z]
 [._]s[a-w][a-z]
 
-# Added for development purposes
 data/horoscopes_small.csv
 __pycache__
+*.pyc
 
 checkpoints
